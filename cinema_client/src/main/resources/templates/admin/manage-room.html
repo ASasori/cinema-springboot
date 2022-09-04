@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700&amp;display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+  <!-- Style -->
+    <link rel="stylesheet" th:href="@{/fonts/icomoon/style.css}">
+
+    <link rel="stylesheet" th:href="@{/css/owl.carousel.min.css}">
+
+    <!-- Style -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+   	<link th:href="@{/css/2.fd207d57.chunk.css}" rel="stylesheet"/>
+    <link th:href="@{/css/main.ffa69c8e.chunk.css}" rel="stylesheet"/>
+	<script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+	
+  <style>
+    .checkOut__left .bookSlot .bookSlot__content .chooseSlot .picking .slot__picking .slot__row .slot__item {
+      font-size: 31px !important;
+      font-weight: 600 !important;
+    }
+    .item--blocked{
+      color: #FFFF !important;
+    }
+  </style>
+  <title>Sidebar #1</title>
+</head>
+
+<body>
+
+  <th:block lang="vi" th:include="fragments/admin/navigation :: navigation"></th:block>
+  
+  <main>
+    <div class="container-fluid bg-light">
+      <div class="bookTicket__content row mt-5" style="margin-top: 0!important;">
+        <div class="checkOut__left col-md-9 col-sm-12 p-0">
+          <div class="bookSlot">
+            <div class="poster__film"
+              style="width: 0;
+                      background-image: url(&quot;http://movie0706.cybersoft.edu.vn/hinhanh/john-wick-iiisssssssssxxxssssssssssssssssssss_gp09.jpg&quot;);">
+
+            </div>
+            <div class="bookSlot__content" style="overflow-x: scroll;">
+
+              <div class="chooseSlot" style="width: 850px">
+                <div class="screen__img"><img src="https://i.ibb.co/zWgWjtg/screen.png" alt="screen">
+                </div>
+                <div class="picking row" style="padding: 0 50px;">
+                  <div class="slot__picking col-12">
+                    <div class="slot__row">
+                    </div>
+                  </div>
+                </div>
+                <div class="slot__detail row">
+                  <div class="col-md-3 col-sm-6 col-xs-6"><i class="fa fa-couch item--regular"></i><span
+                      class="slot__text">Ghế thường</span></div>
+                  <div class="col-md-3 col-sm-6 col-xs-6"><i class="fa fa-couch item--vip"></i><span
+                      class="slot__text">Ghế Vip</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="checkOut__right col-md-3 col-sm-12" style="min-height: 500px;">
+          <div class="checkout__form" style="height: 350px">
+            <div class="film__info" style="margin:10px 20px 10px 0 ;">
+              <span class="film__age--C" style="font-size: large;">Select Branch</span>
+              <select name="" id="listBranch" class="form-control form-control-lg">
+              	<option value="0" selected disabled hidden>Select Branch</option>
+                <option th:each="branch: ${branches}" th:value="${branch.id}" th:text="${branch.name}"></option>
+              </select>
+            </div>
+            <div class="film__info" style="margin:10px 20px 10px 0 ;">
+              <span class="film__age--C" style="font-size: large;">Select Room</span>
+              <select name="" id="listRoom" class="form-control form-control-lg">
+              <option value="0" selected disabled hidden>Select Room</option>
+              </select>
+
+            </div>
+            <div class="film__info" style="margin:10px 20px 10px 0 ;">
+              <span class="film__age--C" style="font-size: large;">Select Type Of Seat</span>
+              <span><i id="example-seat" class="fa fa-couch " style="color:#949494 ;"></i></span>
+              <select name="" id="listSeat" class="form-control form-control-lg">
+                <option value="0" data-class="fa fa-couch slot__item">Ghế Thường</option>
+                <option value="1" data-class="fa fa-couch slot__item item--vip">Ghế Vip</i></option>
+                <option value="2" data-class="fa fa-couch slot__item item--blocked">Ghế Bị Khóa</i></option>
+              </select>
+
+            </div>
+            
+            <div id="btnBook" class="btnBook btn btn-primary" style="background-image: none;" data-toggle="modal"
+              data-target="#CreditModal">
+              SAVE</div>
+          </div>
+			<a th:href="@{/admin/rooms/add}" id="btnBook" class="btn btn-success"><i class="fa fa-plus"> ADD ROOM</i></a>
+			<button id="btnDelete" class="btn btn-danger" style="margin-left: 20px;display: none;">
+			<i class="fa fa-trash" aria-hidden="true">DELETE ROOM</i></button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>
+  <script th:src="@{/js/popper.min.js}"></script>
+  <script th:src="@{/js/main.js}"></script>
+  <script th:inline="javascript">
+  function callAPIGetRooms(){
+	  $.ajax({
+	      url: "http://localhost:8080/api/admin/rooms?branchId=" + $("#listBranch").find(":selected").val(),
+	      type: 'POST',
+          headers: {"Authorization": "Bearer "+[[${session.jwtResponse.accessToken}]]},
+          contentType: "application/json; charset=utf-8",
+	      success: function (data) {
+	          console.log("data: "+data)
+	          $("#listRoom").html('<option value="" selected disabled hidden>Select Room</option>');
+	          data.forEach(room => {
+	              $("#listRoom").append("<option value=" + '"' + room['id'] + '"' + ">" + room['name'] + "</option>")
+	          });
+	      },
+	      error: function(error){
+	          alert(error)
+	      }
+	  }) 
+  }
+  function callAPIGetSeats(){
+	  $.ajax({
+	      url: "http://localhost:8080/api/admin/seats?roomId=" + $("#listRoom").find(":selected").val(),
+	      type: 'POST',
+          headers: {"Authorization": "Bearer "+[[${session.jwtResponse.accessToken}]]},
+          contentType: "application/json; charset=utf-8",
+	      success: function (data) {
+	          var slot=$(".slot__row");
+	          slot.html("");
+	          data.forEach(seat => {
+	              slot.append('<i class="fa fa-couch slot__item '+(seat['active'] ? (seat['vip'] ? 'item--vip':''):'') + '"></i>' )
+	          });
+	      },
+	      error: function(error){
+	          console.log(error)
+	      }
+	  }) 
+  }
+  $(document).ready(function() {
+	$("#listBranch").on("change",function(){
+			callAPIGetRooms();
+			$("#btnDelete").css("display","none");
+	})
+	$("#listRoom").on("change",function(){
+		callAPIGetSeats();
+		$("#btnDelete").css("display","");
+	})
+
+    $('#listSeat').on('change', function() {
+      if($(this).val()==0) $("#example-seat").attr("style","color:#949494")
+      if($(this).val()==1) $("#example-seat").attr("style","color:#fb4226")
+      if($(this).val()==2) $("#example-seat").attr("style","color:#FFFF")
+    });
+	
+	$(document).on('click','.slot__item',function(){
+      $(this).attr("class", $('#listSeat').find(':selected').data("class"))
+    })
+});
+  </script>
+</body>
+
+</html>
